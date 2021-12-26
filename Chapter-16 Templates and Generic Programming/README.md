@@ -650,7 +650,7 @@ s2 = std::move(s1);     // ok: but after the assigment s1 has indeterminate valu
   - `remove_reference`用`string&`进行实例化。
   - `remove_reference<string&>`的`type`成员是`string`。
   - `move`的返回类型是`string&&`。
-  - `move`的函数参数t的类型为`string& &&`，会折叠成`string&`。
+  - `move`的函数参数*t*的类型为`string& &&`，会折叠成`string&`。
 
 可以使用`static_cast`显式地将一个左值转换为一个右值引用。
 

@@ -162,7 +162,7 @@ dynamic_cast<type&&>(e)
 通常情况下，`typeid`用于比较两条表达式的类型是否相同，或者比较一条表达式的类型是否与指定类型相同。
 
 ```c++
-C++Derived *dp = new Derived;
+Derived *dp = new Derived;
 Base *bp = dp;   // both pointers point to a Derived object
 // compare the type of two objects at run time
 if (typeid(*bp) == typeid(*dp))
