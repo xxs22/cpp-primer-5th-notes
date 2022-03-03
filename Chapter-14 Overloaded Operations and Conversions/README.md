@@ -264,10 +264,10 @@ public:
 };
 ```
 
-对于形如`point->mem`的表达式来说，*point*必须是指向类对象的指针或者是一个重载了`operator->`的类的对象。*point*类型不同，`point->mem`的含义也不同。
+对于形如`point->mem`的表达式来说，`point`必须是指向类对象的指针或者是一个重载了`operator->`的类的对象。`point`类型不同，`point->mem`的含义也不同。
 
-- 如果*point*是指针，则调用内置箭头运算符，表达式等价于`(*point).mem`。
-- 如果*point*是重载了`operator->`的类的对象，则使用`point.operator->()`的结果来获取*mem*，表达式等价于`(point.operator->())->mem`。其中，如果该结果是一个指针，则执行内置操作，否则重复调用当前操作。
+- 如果`point`是指针，则调用内置箭头运算符，表达式等价于`(*point).mem`。
+- 如果`point`是重载了`operator->`的类的对象，则使用`point.operator->()`的结果来获取`mem`，表达式等价于`(point.operator->())->mem`。其中，如果该结果是一个指针，则执行内置操作，否则重复调用当前操作。
 
 ## 函数调用运算符（Function-Call Operator）
 
@@ -348,7 +348,7 @@ private:
 
 ### 标准库定义的函数对象（Library-Defined Function Objects）
 
-标准库在头文件*functional*中定义了一组表示算术运算符、关系运算符和逻辑运算符的类，每个类分别定义了一个执行命名操作的调用运算符。这些类都被定义为模板的形式，可以为其指定具体的应用类型（即调用运算符的形参类型）。
+标准库在头文件`functional`中定义了一组表示算术运算符、关系运算符和逻辑运算符的类，每个类分别定义了一个执行命名操作的调用运算符。这些类都被定义为模板的形式，可以为其指定具体的应用类型（即调用运算符的形参类型）。
 
 ![14-2](Images/14-2.png)
 
@@ -367,7 +367,7 @@ sort(nameTable.begin(), nameTable.end(), less<string*>());
 
 调用形式指明了调用返回的类型以及传递给调用的实参类型。不同的可调用对象可能具有相同的调用形式。
 
-标准库`function`类型是一个模板，定义在头文件*functional*中，用来表示对象的调用形式。
+标准库`function`类型是一个模板，定义在头文件`functional`中，用来表示对象的调用形式。
 
 ![14-3](Images/14-3.png)
 
@@ -468,7 +468,7 @@ static_cast<int>(si) + 3;    // ok: explicitly request the conversion
 
 在两种情况下可能产生多重转换路径：
 
-- *A*类定义了一个接受*B*类对象的转换构造函数，同时*B*类定义了一个转换目标是*A*类的类型转换运算符。
+- `A`类定义了一个接受`B`类对象的转换构造函数，同时`B`类定义了一个转换目标是`A`类的类型转换运算符。
 
   ```c++
   // usually a bad idea to have mutual conversions between two class types

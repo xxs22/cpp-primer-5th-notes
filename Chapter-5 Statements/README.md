@@ -56,10 +56,10 @@ else
     statement2
 ```
 
-其中*condition*是判断条件，可以是一个表达式或者初始化了的变量声明。*condition*必须用圆括号括起来。
+其中`condition`是判断条件，可以是一个表达式或者初始化了的变量声明。`condition`必须用圆括号括起来。
 
-- 如果*condition*为真，则执行*statement*。执行完成后，程序继续执行`if`语句后面的其他语句。
-- 如果*condition*为假，则跳过*statement*。对于简单`if`语句来说，程序直接执行`if`语句后面的其他语句；对于`if-else`语句来说，程序先执行*statement2*，再执行`if`语句后面的其他语句。
+- 如果`condition`为真，则执行`statement`。执行完成后，程序继续执行`if`语句后面的其他语句。
+- 如果`condition`为假，则跳过`statement`。对于简单`if`语句来说，程序直接执行`if`语句后面的其他语句；对于`if-else`语句来说，程序先执行`statement2`，再执行`if`语句后面的其他语句。
 
 `if`语句可以嵌套，其中`else`与离它最近的尚未匹配的`if`相匹配。
 
@@ -103,7 +103,7 @@ while (condition)
     statement
 ```
 
-只要*condition*的求值结果为`true`，就一直执行*statement*（通常是一个块）。*condition*不能为空，如果*condition*第一次求值就是`false`，*statement*一次都不会执行。
+只要`condition`的求值结果为`true`，就一直执行`statement`（通常是一个块）。`condition`不能为空，如果`condition`第一次求值就是`false`，`statement`一次都不会执行。
 
 定义在`while`条件部分或者循环体内的变量每次迭代都经历从创建到销毁的过程。
 
@@ -118,7 +118,7 @@ for (initializer; condition; expression)
     statement
 ```
 
-一般情况下，*initializer*负责初始化一个值，这个值会随着循环的进行而改变。*condition*作为循环控制的条件，只要*condition*的求值结果为`true`，就执行一次*statement*。执行后再由*expression*负责修改*initializer*初始化的变量，这个变量就是*condition*检查的对象。如果*condition*第一次求值就是`false`，*statement*一次都不会执行。*initializer*中也可以定义多个对象，但是只能有一条声明语句，因此所有变量的基础类型必须相同。
+一般情况下，`initializer`负责初始化一个值，这个值会随着循环的进行而改变。`condition`作为循环控制的条件，只要`condition`的求值结果为`true`，就执行一次`statement`。执行后再由`expression`负责修改`initializer`初始化的变量，这个变量就是`condition`检查的对象。如果`condition`第一次求值就是`false`，`statement`一次都不会执行。`initializer`中也可以定义多个对象，但是只能有一条声明语句，因此所有变量的基础类型必须相同。
 
 `for`语句头中定义的对象只在`for`循环体内可见。
 
@@ -131,7 +131,7 @@ for (declaration : expression)
     statement
 ```
 
-其中*expression*表示一个序列，拥有能返回迭代器的`begin`和`end`成员。*declaration*定义一个变量，序列中的每个元素都应该能转换成该变量的类型（可以使用`auto`）。如果需要对序列中的元素执行写操作，循环变量必须声明成引用类型。每次迭代都会重新定义循环控制变量，并将其初始化为序列中的下一个值，之后才会执行*statement*。
+其中`expression`表示一个序列，拥有能返回迭代器的`begin`和`end`成员。`declaration`定义一个变量，序列中的每个元素都应该能转换成该变量的类型（可以使用`auto`）。如果需要对序列中的元素执行写操作，循环变量必须声明成引用类型。每次迭代都会重新定义循环控制变量，并将其初始化为序列中的下一个值，之后才会执行`statement`。
 
 ### do-while语句（The do-while Statement）
 
@@ -143,7 +143,7 @@ do
 while (condition);
 ```
 
-计算*condition*的值之前会先执行一次*statement*，*condition*不能为空。如果*condition*的值为`false`，循环终止，否则重复执行*statement*。
+计算`condition`的值之前会先执行一次`statement`，`condition`不能为空。如果`condition`的值为`false`，循环终止，否则重复执行`statement`。
 
 因为`do-while`语句先执行语句或块，再判断条件，所以不允许在条件部分定义变量。
 
@@ -205,7 +205,7 @@ end: return; // labeled statement; may be the target of a goto
 goto label;
 ```
 
-`goto`语句使程序无条件跳转到标签为*label*的语句处执行，但两者必须位于同一个函数内，同时`goto`语句也不能将程序的控制权从变量的作用域之外转移到作用域之内。
+`goto`语句使程序无条件跳转到标签为`label`的语句处执行，但两者必须位于同一个函数内，同时`goto`语句也不能将程序的控制权从变量的作用域之外转移到作用域之内。
 
 建议不要在程序中使用`goto`语句，它使得程序既难理解又难修改。
 
@@ -242,7 +242,7 @@ catch (exception-declaration)
 } // . . .
 ```
 
-`try`语句块中的*program-statements*组成程序的正常逻辑，其内部声明的变量在块外无法访问，即使在`catch`子句中也不行。`catch`子句包含关键字`catch`、括号内一个对象的声明（异常声明，exception declaration）和一个块。当选中了某个`catch`子句处理异常后，执行与之对应的块。`catch`一旦完成，程序会跳过剩余的所有`catch`子句，继续执行后面的语句。
+`try`语句块中的`program-statements`组成程序的正常逻辑，其内部声明的变量在块外无法访问，即使在`catch`子句中也不行。`catch`子句包含关键字`catch`、括号内一个对象的声明（异常声明，exception declaration）和一个块。当选中了某个`catch`子句处理异常后，执行与之对应的块。`catch`一旦完成，程序会跳过剩余的所有`catch`子句，继续执行后面的语句。
 
 如果最终没能找到与异常相匹配的`catch`子句，程序会执行名为`terminate`的标准库函数。该函数的行为与系统有关，一般情况下，执行该函数将导致程序非正常退出。类似的，如果一段程序没有`try`语句块且发生了异常，系统也会调用`terminate`函数并终止当前程序的执行。
 
@@ -250,14 +250,14 @@ catch (exception-declaration)
 
 异常类分别定义在4个头文件中：
 
-- 头文件*exception*定义了最通用的异常类`exception`。它只报告异常的发生，不提供任何额外信息。
+- 头文件`exception`定义了最通用的异常类`exception`。它只报告异常的发生，不提供任何额外信息。
 
-- 头文件*stdexcept*定义了几种常用的异常类。
+- 头文件`stdexcept`定义了几种常用的异常类。
 
   ![5-2](Images/5-2.png)
 
-- 头文件*new*定义了`bad_alloc`异常类。
-- 头文件*type_info*定义了`bad_cast`异常类。
+- 头文件`new`定义了`bad_alloc`异常类。
+- 头文件`type_info`定义了`bad_cast`异常类。
 
 标准库异常类的继承体系：
 

@@ -50,7 +50,7 @@ for (unsigned u = 10; u >= 0; --u)
     std::cout << u << std::endl;
 ```
 
-当*u*等于0时，*--u*的结果将会是4294967295。一种解决办法是用`while`语句来代替`for`语句，前者可以在输出变量前先减去1。
+当`u`等于0时，`--u`的结果将会是4294967295。一种解决办法是用`while`语句来代替`for`语句，前者可以在输出变量前先减去1。
 
 ```c++
 unsigned u = 11;    // start the loop one past the first element we want to print
@@ -201,7 +201,7 @@ int main()
 
 ### 引用（References）
 
-引用为对象起了另外一个名字，引用类型引用（refers to）另外一种类型。通过将声明符写成`&d`的形式来定义引用类型，其中*d*是变量名称。
+引用为对象起了另外一个名字，引用类型引用（refers to）另外一种类型。通过将声明符写成`&d`的形式来定义引用类型，其中`d`是变量名称。
 
 ```c++
 int ival = 1024;
@@ -224,7 +224,7 @@ int &refVal2;       // error: a reference must be initialized
 - 指针本身就是一个对象，允许对指针赋值和拷贝，而且在生命周期内它可以先后指向不同的对象。
 - 指针无须在定义时赋初值。和其他内置类型一样，在块作用域内定义的指针如果没有被初始化，也将拥有一个不确定的值。
 
-通过将声明符写成`*d`的形式来定义指针类型，其中*d*是变量名称。如果在一条语句中定义了多个指针变量，则每个量前都必须有符号`*`。
+通过将声明符写成`*d`的形式来定义指针类型，其中`d`是变量名称。如果在一条语句中定义了多个指针变量，则每个量前都必须有符号`*`。
 
 ```c++
 int *ip1, *ip2;     // both ip1 and ip2 are pointers to int
@@ -265,7 +265,7 @@ cout << *p;     // * yields the object to which p points; prints 42
 
 空指针（null pointer）不指向任何对象，在试图使用一个指针前代码可以先检查它是否为空。得到空指针最直接的办法是用字面值`nullptr`来初始化指针。
 
-旧版本程序通常使用`NULL`（预处理变量，定义于头文件*cstdlib*中，值为0）给指针赋值，但在C++11中，最好使用`nullptr`初始化空指针。
+旧版本程序通常使用`NULL`（预处理变量，定义于头文件`cstdlib`中，值为0）给指针赋值，但在C++11中，最好使用`nullptr`初始化空指针。
 
 ```c++
 int *p1 = nullptr;  // equivalent to int *p1 = 0;
@@ -528,7 +528,7 @@ decltype(cj) z;     // error: z is a reference and must be initialized
 
 如果`decltype`使用的表达式不是一个变量，则`decltype`返回表达式结果对应的类型。如果表达式的内容是解引用操作，则`decltype`将得到引用类型。如果`decltype`使用的是一个不加括号的变量，则得到的结果就是该变量的类型；如果给变量加上了一层或多层括号，则`decltype`会得到引用类型，因为变量是一种可以作为赋值语句左值的特殊表达式。
 
-`decltype((var))`的结果永远是引用，而`decltype(var)`的结果只有当*var*本身是一个引用时才会是引用。
+`decltype((var))`的结果永远是引用，而`decltype(var)`的结果只有当`var`本身是一个引用时才会是引用。
 
 ## 自定义数据结构（Defining Our Own Data Structures）
 

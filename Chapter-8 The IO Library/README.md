@@ -13,11 +13,11 @@
 
 ## IO类（The IO Classes）
 
-头文件*iostream*定义了用于读写流的基本类型，*fstream*定义了读写命名文件的类型，*sstream*定义了读写内存中`string`对象的类型。
+头文件`iostream`定义了用于读写流的基本类型，`fstream`定义了读写命名文件的类型，`sstream`定义了读写内存中`string`对象的类型。
 
 ![8-1](Images/8-1.png)
 
-宽字符版本的IO类型和函数的名字以`w`开始，如`wcin`、`wcout`和`wcerr`分别对应`cin`、`cout`和`cerr`。它们与其对应的普通`char`版本都定义在同一个头文件中，如头文件*fstream*定义了`ifstream`和`wifstream`类型。
+宽字符版本的IO类型和函数的名字以`w`开始，如`wcin`、`wcout`和`wcerr`分别对应`cin`、`cout`和`cerr`。它们与其对应的普通`char`版本都定义在同一个头文件中，如头文件`fstream`定义了`ifstream`和`wifstream`类型。
 
 可以将派生类的对象当作其基类的对象使用。
 
@@ -110,7 +110,7 @@ cin.tie(old_tie);   // reestablish normal tie between cin and cout
 
 ## 文件输入输出（File Input and Output）
 
-头文件*fstream*定义了三个类型来支持文件IO：`ifstream`从给定文件读取数据，`ofstream`向指定文件写入数据，`fstream`可以同时读写指定文件。
+头文件`fstream`定义了三个类型来支持文件IO：`ifstream`从给定文件读取数据，`ofstream`向指定文件写入数据，`fstream`可以同时读写指定文件。
 
 ![8-3](Images/8-3.png)
 
@@ -163,7 +163,7 @@ out.close();
 
 ## string流（string Streams）
 
-头文件*sstream*定义了三个类型来支持内存IO：`istringstream`从`string`读取数据，`ostringstream`向`string`写入数据，`stringstream`可以同时读写`string`的数据。
+头文件`sstream`定义了三个类型来支持内存IO：`istringstream`从`string`读取数据，`ostringstream`向`string`写入数据，`stringstream`可以同时读写`string`的数据。
 
 ![8-5](Images/8-5.png)
 

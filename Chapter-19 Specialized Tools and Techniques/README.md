@@ -36,7 +36,7 @@ void *operator delete(void*, nothrow_t&) noexcept;
 void *operator delete[](void*, nothrow_t&) noexcept
 ```
 
-`nothrow_t`类型是定义在头文件*new*中的一个结构体，这个类型不包含任何成员。头文件*new*还定义了一个名为`nothrow`的`const`对象，用户可以通过这个对象请求`new`的非抛出版本。
+`nothrow_t`类型是定义在头文件`new`中的一个结构体，这个类型不包含任何成员。头文件`new`还定义了一个名为`nothrow`的`const`对象，用户可以通过这个对象请求`new`的非抛出版本。
 
 将`operator`函数定义为类的成员时，它们是隐式静态的，无须显式地声明`static`。因为`operator new`用在对象构造之前，`operator delete`用在对象销毁之后，所以它们必须是静态成员，而且不能操纵类的任何数据成员。
 
@@ -82,7 +82,7 @@ new (place_address) type [size]
 new (place_address) type [size] { braced initializer list }
 ```
 
-其中*place_address*是一个指针。*initializers*是一个以逗号分隔的初始值列表（可能为空），该列表用于构造新分配的对象。
+其中`place_address`是一个指针。`initializers`是一个以逗号分隔的初始值列表（可能为空），该列表用于构造新分配的对象。
 
 当仅通过一个地址值调用定位`new`时，它会使用`operator new(size_t, void*)`函数（用户无法重载的版本）。该函数不分配任何内存，直接返回指针形参。然后由`new`表达式负责在指定的地址初始化对象。
 
@@ -109,11 +109,11 @@ dynamic_cast<type&>(e)
 dynamic_cast<type&&>(e)
 ```
 
-其中*type*是一个类类型，并且通常情况下该类型应该含有虚函数。在第一种形式中，*e*必须是一个有效指针；在第二种形式中，*e*必须是一个左值；在第三种形式中，*e*不能是左值。在所有形式中，*e*的类型必须符合以下条件之一：
+其中`type`是一个类类型，并且通常情况下该类型应该含有虚函数。在第一种形式中，`e`必须是一个有效指针；在第二种形式中，`e`必须是一个左值；在第三种形式中，`e`不能是左值。在所有形式中，`e`的类型必须符合以下条件之一：
 
-- *e*是*type*的公有派生类。
-- *e*是*type*的公有基类。
-- *e*和*type*类型相同。
+- `e`是`type`的公有派生类。
+- `e`是`type`的公有基类。
+- `e`和`type`类型相同。
 
 如果条件符合，则类型转换成功，否则转换失败。转换失败可能有两种结果：
 
@@ -130,7 +130,7 @@ dynamic_cast<type&&>(e)
   }
   ```
 
-- 如果`dynamic_cast`语句的转换目标是引用类型，则抛出`bad_cast`异常（定义在头文件*typeinfo*中）。
+- 如果`dynamic_cast`语句的转换目标是引用类型，则抛出`bad_cast`异常（定义在头文件`typeinfo`中）。
 
   ```c++
   void f(const Base &b)
@@ -153,7 +153,7 @@ dynamic_cast<type&&>(e)
 
 ### typeid运算符（The typeid Operator）
 
-`typeid`表达式的形式是`typeid(e)`，其中*e*可以是任意表达式或类型名称。`typeid`的结果是一个指向常量对象的引用，该对象的类型是标准库`type_info`（定义在头文件*typeinfo*中）或`type_info`的公有派生类型。
+`typeid`表达式的形式是`typeid(e)`，其中`e`可以是任意表达式或类型名称。`typeid`的结果是一个指向常量对象的引用，该对象的类型是标准库`type_info`（定义在头文件`typeinfo`中）或`type_info`的公有派生类型。
 
 `typeid`可以作用于任何类型的表达式，其中的顶层`const`会被忽略。如果表达式是一个引用，则`typeid`返回该引用所指对象的类型。当`typeid`作用于数组或函数时，不会执行向指针的标准类型转换。
 
@@ -186,7 +186,7 @@ if (typeid(bp) == typeid(Derived))
 }
 ```
 
-只有当类型含有虚函数时，编译器才会对`typeid`的表达式求值以确定返回类型。对于`typeid(*p)`，如果指针*p*所指向的类型不包含虚函数，则*p*可以是一个无效指针。否则`*p`会在运行期间求值，此时*p*必须是一个有效指针。如果*p*是空指针，`typeid(*p)`会抛出`bad_typeid`异常。
+只有当类型含有虚函数时，编译器才会对`typeid`的表达式求值以确定返回类型。对于`typeid(*p)`，如果指针`p`所指向的类型不包含虚函数，则`p`可以是一个无效指针。否则`*p`会在运行期间求值，此时`p`必须是一个有效指针。如果`p`是空指针，`typeid(*p)`会抛出`bad_typeid`异常。
 
 ### 使用RTTI（Using RTTI）
 
@@ -243,7 +243,7 @@ bool Base::equal(const Base &rhs) const
 
 ### type_info类（The type_info Class）
 
-`type_info`类的精确定义会根据编译器的不同而略有差异。但是C++规定`type_info`必须定义在头文件*typeinfo*中，并且至少提供以下操作：
+`type_info`类的精确定义会根据编译器的不同而略有差异。但是C++规定`type_info`必须定义在头文件`typeinfo`中，并且至少提供以下操作：
 
 ![19-1](Images/19-1.png)
 
@@ -366,7 +366,7 @@ enum class open_modes;    // scoped enums can use int by default
 
 ### 数据成员指针（Pointers to Data Members）
 
-声明成员指针时必须在`*`前添加`classname::`以表示当前定义的指针可以指向*classname*的成员。
+声明成员指针时必须在`*`前添加`classname::`以表示当前定义的指针可以指向`classname`的成员。
 
 ```c++
 class Screen
@@ -461,7 +461,7 @@ find_if(svec.begin(), svec.end(), fcn);
 
 定义一个`function`对象时，必须指定该对象所能表示的函数类型（即可调用对象的形式）。如果可调用对象是一个成员函数，则第一个形参必须表示该成员是在哪个对象上执行的。
 
-使用标准库功能`mem_fn`（定义在头文件*functional*中）可以让编译器推断成员的类型。和`function`一样，`mem_fn`可以从成员指针生成可调用对象。但`mem_fn`可以根据成员指针的类型推断可调用对象的类型，无须显式指定。
+使用标准库功能`mem_fn`（定义在头文件`functional`中）可以让编译器推断成员的类型。和`function`一样，`mem_fn`可以从成员指针生成可调用对象。但`mem_fn`可以根据成员指针的类型推断可调用对象的类型，无须显式指定。
 
 ```c++
 find_if(svec.begin(), svec.end(), mem_fn(&string::empty));

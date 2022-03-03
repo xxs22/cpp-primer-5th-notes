@@ -41,7 +41,7 @@ cout << i << " " << ++i << endl;    // undefined
 - 不确定求值顺序时，使用括号来强制让表达式的组合关系符合程序逻辑的要求。
 - 如果表达式改变了某个运算对象的值，则在表达式的其他位置不要再使用这个运算对象。
 
-当改变运算对象的子表达式本身就是另一个子表达式的运算对象时，第二条规则无效。如`*++iter`，递增运算符改变了*iter*的值，而改变后的*iter*又是解引用运算符的运算对象。类似情况下，求值的顺序不会成为问题。
+当改变运算对象的子表达式本身就是另一个子表达式的运算对象时，第二条规则无效。如`*++iter`，递增运算符改变了`iter`的值，而改变后的`iter`又是解引用运算符的运算对象。类似情况下，求值的顺序不会成为问题。
 
 ## 算术运算符（Arithmetic Operators）
 
@@ -130,7 +130,7 @@ n = p->size();      // equivalent to (*p).size()
 cond ? expr1 : expr2;
 ```
 
-其中*cond*是判断条件的表达式，如果*cond*为真则对*expr1*求值并返回该值，否则对*expr2*求值并返回该值。
+其中`cond`是判断条件的表达式，如果`cond`为真则对`expr1`求值并返回该值，否则对`expr2`求值并返回该值。
 
 只有当条件运算符的两个表达式都是左值或者能转换成同一种左值类型时，运算的结果才是左值，否则运算的结果就是右值。
 
@@ -204,7 +204,7 @@ for(vector<int>::size_type ix = 0; ix != ivec.size(); ++ix, --cnt)
 cast-name<type>(expression);
 ```
 
-其中*type*是转换的目标类型，*expression*是要转换的值。如果*type*是引用类型，则转换结果是左值。*cast-name*是`static_cast`、`dynamic_cast`、`const_cast`和`reinterpret_cast`中的一种，用来指定转换的方式。
+其中`type`是转换的目标类型，`expression`是要转换的值。如果`type`是引用类型，则转换结果是左值。`cast-name`是`static_cast`、`dynamic_cast`、`const_cast`和`reinterpret_cast`中的一种，用来指定转换的方式。
 
 - `dynamic_cast`支持运行时类型识别。
 - 任何具有明确定义的类型转换，只要不包含底层`const`，都能使用`static_cast`。

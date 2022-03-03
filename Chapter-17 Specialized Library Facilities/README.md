@@ -2,7 +2,7 @@
 
 ## tuple类型（The tuple Type）
 
-`tuple`是类似`pair`的模板，定义在头文件*tuple*中。与`pair`不同，`tuple`可以有任意数量的成员。如果希望将一些数据组合成单一对象，但又不想定义新数据结构时，可以使用`tuple`（“快速而随意”的数据结构）。
+`tuple`是类似`pair`的模板，定义在头文件`tuple`中。与`pair`不同，`tuple`可以有任意数量的成员。如果希望将一些数据组合成单一对象，但又不想定义新数据结构时，可以使用`tuple`（“快速而随意”的数据结构）。
 
 ![17-1](Images/17-1.png)
 
@@ -56,7 +56,7 @@ tuple_element<1, trans>::type cnt = get<1>(item);    // cnt is an int
 
 ## bitset类型（The bitset Type）
 
-标准库在头文件*bitset*中定义了`bitset`类，用于处理二进制位。`bitset`可以处理超过最长整型类型大小的位集合。
+标准库在头文件`bitset`中定义了`bitset`类，用于处理二进制位。`bitset`可以处理超过最长整型类型大小的位集合。
 
 ### 定义和初始化bitset（Defining and Initializing bitsets）
 
@@ -112,7 +112,7 @@ cout << "ulong = " << ulong << endl;
 
 ## 正则表达式（Regular Expressions）
 
-正则表达式是一种描述字符序列的方法。C++11新标准增加了正则表达式库（RE库），定义在头文件*regex*中，包含多个组件。
+正则表达式是一种描述字符序列的方法。C++11新标准增加了正则表达式库，定义在头文件`regex`中，包含多个组件。
 
 ![17-5](Images/17-5.png)
 
@@ -239,7 +239,7 @@ ECMAScript正则表达式语言的一些特性：
 
 ![17-15](Images/17-15.png)
 
-标准库定义了用于在正则表达式替换过程中控制匹配或格式的标志。这些标志可以传递给`regex_search`、`regex_match`函数或者`smatch`类的`format`成员。匹配和格式化标志的类型为`match_flag_type`，定义在命名空间*regex_constants*中。由于*regex_constants*定义在*std*中，因此在使用这些名字时，需要同时加上两个命名空间的限定符。
+标准库定义了用于在正则表达式替换过程中控制匹配或格式的标志。这些标志可以传递给`regex_search`、`regex_match`函数或者`smatch`类的`format`成员。匹配和格式化标志的类型为`match_flag_type`，定义在命名空间`regex_constants`中。由于`regex_constants`定义在`std`中，因此在使用这些名字时，需要同时加上两个命名空间的限定符。
 
 ![17-16](Images/17-16.png)
 
@@ -256,7 +256,7 @@ cout << regex_replace(s, r, fmt2, format_no_copy) << endl;
 
 在新标准出现之前，C和C++都依赖于一个简单的C库函数`rand`来生成随机数。该函数生成均匀分布的伪随机整数，每个随机数的范围在0和一个系统相关的最大值（至少为32767）之间。
 
-头文件*random*中的随机数库定义了一组类来解决`rand`函数的一些问题：随机数引擎类（random-number engines）可以生成`unsigned`随机数序列；随机数分布类（random-number distribution classes）使用引擎类生成指定类型、范围和概率分布的随机数。
+头文件`random`中的随机数库定义了一组类来解决`rand`函数的一些问题：随机数引擎类（random-number engines）可以生成`unsigned`随机数序列；随机数分布类（random-number distribution classes）使用引擎类生成指定类型、范围和概率分布的随机数。
 
 ![17-17](Images/17-17.png)
 
@@ -332,7 +332,7 @@ default_random_engine e3;    // uses the default seed value
 e3.seed(32767);     // call seed to set a new seed value
 ```
 
-选择种子的常用方法是调用系统函数`time`。该函数定义在头文件*ctime*中，返回从一个特定时刻到当前经过的秒数。`time`函数接受单个指针参数，指向用于写入时间的数据结构。如果指针为空，则函数简单地返回时间。
+选择种子的常用方法是调用系统函数`time`。该函数定义在头文件`ctime`中，返回从一个特定时刻到当前经过的秒数。`time`函数接受单个指针参数，指向用于写入时间的数据结构。如果指针为空，则函数简单地返回时间。
 
 ```c++
 default_random_engine e1(time(0));   // a somewhat random seed
@@ -473,7 +473,7 @@ printed in hexadecimal: 0X14 0X400
 - `precision`成员是重载的。一个版本接受一个`int`值，将精度设置为此值，并返回旧精度值。另一个版本不接受参数，直接返回当前精度值。
 - `setprecision`操纵符接受一个参数来设置精度。
 
-`setprecision`操纵符和其他接受参数的操纵符都定义在头文件*iomanip*中。
+`setprecision`操纵符和其他接受参数的操纵符都定义在头文件`iomanip`中。
 
 ```c++
 // cout.precision reports the current precision value
@@ -497,7 +497,7 @@ Precision: 12, Value: 1.41421356237
 Precision: 3, Value: 1.41
 ```
 
-定义在头文件*iostream*中的操纵符：
+定义在头文件`iostream`中的操纵符：
 
 ![17-20](Images/17-20.png)
 
@@ -589,7 +589,7 @@ i: -#########16next col
 d: #####3.14159next col
 ```
 
-头文件*iomanip*中定义的操纵符：
+头文件`iomanip`中定义的操纵符：
 
 ![17-21](Images/17-21.png)
 
@@ -626,7 +626,7 @@ while (cin.get(ch))
 
 一般情况下，在读取下一个值之前，标准库保证程序可以退回最多一个值。
 
-`peek`和无参数的`get`函数都以`int`类型从输入流返回字符。这些函数使用`int`的原因是可以返回文件尾标记。`char`范围中的每个值都表示一个真实字符，因此没有额外的值可以表示文件尾。返回`int`的函数先将要返回的字符转换为`unsigned char`，再将结果提升为`int`。因此即使字符集中有字符映射到负值，返回的`int`也是正值。而标准库使用负值表示文件尾，这样就能保证文件尾与任何合法字符的值都不相同。头文件*cstdio*定义了一个名为`EOF`的常量值，可以用它检测函数返回的值是否是文件尾。
+`peek`和无参数的`get`函数都以`int`类型从输入流返回字符。这些函数使用`int`的原因是可以返回文件尾标记。`char`范围中的每个值都表示一个真实字符，因此没有额外的值可以表示文件尾。返回`int`的函数先将要返回的字符转换为`unsigned char`，再将结果提升为`int`。因此即使字符集中有字符映射到负值，返回的`int`也是正值。而标准库使用负值表示文件尾，这样就能保证文件尾与任何合法字符的值都不相同。头文件`cstdio`定义了一个名为`EOF`的常量值，可以用它检测函数返回的值是否是文件尾。
 
 ```c++
 int ch;    // use an int, not a char to hold the return from get()
@@ -652,7 +652,7 @@ while ((ch = cin.get()) != EOF)
 
 `get`和`getline`函数接受相同的参数，它们的行为类似但不相同。两个函数都一直读取数据，直到遇到下列情况之一：
 
-- 已经读取了*size - 1*个字符。
+- 已经读取了`size - 1`个字符。
 - 遇到了文件尾（`EOF`）。
 - 遇到了分隔符。
 
@@ -707,6 +707,6 @@ seekg(offset, from);    // set the read marker offset distance from from
 seekp(offset, from);    // offset has type off_type
 ```
 
-参数*new_position*和*offset*的类型分别是`pos_type`和`off_type`，这两个类型都是机器相关的，定义在头文件*istream*和*ostream*中。`pos_type`表示文件位置，而`off_type`表示距离当前位置的偏移量，偏移量可以是正数也可以是负数。
+参数`new_position`和`offset`的类型分别是`pos_type`和`off_type`，这两个类型都是机器相关的，定义在头文件`istream`和`ostream`中。`pos_type`表示文件位置，而`off_type`表示距离当前位置的偏移量，偏移量可以是正数也可以是负数。
 
 `tellg`和`tellp`函数返回一个`pos_type`值，表示流的当前位置。

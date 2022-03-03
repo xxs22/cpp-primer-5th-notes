@@ -15,7 +15,7 @@
 
 ![11-1](Images/11-1.png)
 
-`map`和`multimap`类型定义在头文件*map*中；`set`和`multiset`类型定义在头文件*set*中；无序容器定义在头文件*unordered_map*和*unordered_set*中。
+`map`和`multimap`类型定义在头文件`map`中；`set`和`multiset`类型定义在头文件`set`中；无序容器定义在头文件`unordered_map`和`unordered_set`中。
 
 ## 使用关联容器（Using an Associative Container）
 
@@ -79,7 +79,7 @@ multiset<Sales_data, decltype(compareIsbn)*> bookstore(compareIsbn);
 
 ### pair类型（The pair Type）
 
-`pair`定义在头文件*utility*中。一个`pair`可以保存两个数据成员，分别命名为`first`和`second`。
+`pair`定义在头文件`utility`中。一个`pair`可以保存两个数据成员，分别命名为`first`和`second`。
 
 ```c++
 pair<string, string> anon;        // holds two strings

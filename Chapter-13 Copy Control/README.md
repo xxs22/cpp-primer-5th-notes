@@ -318,7 +318,7 @@ inline void swap(HasPtr &lhs, HasPtr &rhs)
 }
 ```
 
-一些算法在交换两个元素时会调用`swap`函数，其中每个`swap`调用都应该是未加限定的。如果存在类型特定的`swap`版本，其匹配程度会优于*std*中定义的版本（假定作用域中有`using`声明）。
+一些算法在交换两个元素时会调用`swap`函数，其中每个`swap`调用都应该是未加限定的。如果存在类型特定的`swap`版本，其匹配程度会优于`std`中定义的版本（假定作用域中有`using`声明）。
 
 ```c++
 void swap(Foo &lhs, Foo &rhs)
@@ -391,7 +391,7 @@ int &&rr1 = 42;     // ok: literals are rvalues
 int &&rr2 = rr1;    // error: the expression rr1 is an lvalue!
 ```
 
-调用`move`函数可以获得绑定在左值上的右值引用，此函数定义在头文件*utility*中。
+调用`move`函数可以获得绑定在左值上的右值引用，此函数定义在头文件`utility`中。
 
 ```c++
 int &&rr3 = std::move(rr1);
@@ -509,7 +509,7 @@ C++11标准库定义了移动迭代器（move iterator）适配器。一个移�
 
 ### 右值引用和成员函数（Rvalue References and Member Functions）
 
-区分移动和拷贝的重载函数通常有一个版本接受一个`const T&`参数，另一个版本接受一个`T&&`参数（*T*为类型）。
+区分移动和拷贝的重载函数通常有一个版本接受一个`const T&`参数，另一个版本接受一个`T&&`参数（`T`为类型）。
 
 ```c++
 void push_back(const X&);   // copy: binds to any kind of X

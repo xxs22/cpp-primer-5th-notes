@@ -2,7 +2,7 @@
 
 ## 概述（Overview）
 
-大多数算法都定义在头文件*algorithm*中，此外标准库还在头文件*numeric*中定义了一组数值泛型算法。一般情况下，这些算法并不直接操作容器，而是遍历由两个迭代器指定的元素范围进行操作。
+大多数算法都定义在头文件`algorithm`中，此外标准库还在头文件`numeric`中定义了一组数值泛型算法。一般情况下，这些算法并不直接操作容器，而是遍历由两个迭代器指定的元素范围进行操作。
 
 `find`函数将范围中的每个元素与给定值进行比较，返回指向第一个等于给定值的元素的迭代器。如果无匹配元素，则返回其第二个参数来表示搜索失败。
 
@@ -23,7 +23,7 @@ cout << "The value " << val
 
 ### 只读算法（Read-Only Algorithms）
 
-`accumulate`函数（定义在头文件*numeric*中）用于计算一个序列的和。它接受三个参数，前两个参数指定需要求和的元素范围，第三个参数是和的初值（决定加法运算类型和返回值类型）。
+`accumulate`函数（定义在头文件`numeric`中）用于计算一个序列的和。它接受三个参数，前两个参数指定需要求和的元素范围，第三个参数是和的初值（决定加法运算类型和返回值类型）。
 
 ```c++
 // sum the elements in vec starting the summation with the value 0
@@ -64,7 +64,7 @@ fill_n(vec.begin(), vec.size(), 0);
 
 插入迭代器（insert iterator）是一种向容器内添加元素的迭代器。通过插入迭代器赋值时，一个与赋值号右侧值相等的元素会被添加到容器中。
 
-`back_inserter`函数（定义在头文件*iterator*中）接受一个指向容器的引用，返回与该容器绑定的插入迭代器。通过此迭代器赋值时，赋值运算符会调用`push_back`将一个具有给定值的元素添加到容器中。
+`back_inserter`函数（定义在头文件`iterator`中）接受一个指向容器的引用，返回与该容器绑定的插入迭代器。通过此迭代器赋值时，赋值运算符会调用`push_back`将一个具有给定值的元素添加到容器中。
 
 ```c++
 vector<int> vec;    // empty vector
@@ -153,7 +153,7 @@ sort(words.begin(), words.end(), isShorter);
 [capture list] (parameter list) -> return type { function body }
 ```
 
-其中，*capture list*（捕获列表）是一个由`lambda`所在函数定义的局部变量的列表（通常为空）。*return type*、*parameter list*和*function body*与普通函数一样，分别表示返回类型、参数列表和函数体。但与普通函数不同，`lambda`必须使用尾置返回类型，且不能有默认实参。
+其中，`capture list`（捕获列表）是一个由`lambda`所在函数定义的局部变量的列表（通常为空）。`return type`、`parameter list`和`function body`与普通函数一样，分别表示返回类型、参数列表和函数体。但与普通函数不同，`lambda`必须使用尾置返回类型，且不能有默认实参。
 
 定义`lambda`时可以省略参数列表和返回类型，但必须包含捕获列表和函数体。省略参数列表等价于指定空参数列表。省略返回类型时，若函数体只是一个`return`语句，则返回类型由返回表达式的类型推断而来。否则返回类型为`void`。
 
@@ -240,13 +240,13 @@ transform(vi.begin(), vi.end(), vi.begin(),
 
 ### 参数绑定（Binding Arguments）
 
-`bind`函数定义在头文件*functional*中，相当于一个函数适配器，它接受一个可调用对象，生成一个新的可调用对象来适配原对象的参数列表。一般形式如下：
+`bind`函数定义在头文件`functional`中，相当于一个函数适配器，它接受一个可调用对象，生成一个新的可调用对象来适配原对象的参数列表。一般形式如下：
 
 ```c++
 auto newCallable = bind(callable, arg_list);
 ```
 
-其中，*newCallable*本身是一个可调用对象，*arg_list*是一个以逗号分隔的参数列表，对应给定的*callable*的参数。之后调用*newCallable*时，*newCallable*会再调用*callable*，并传递给它*arg_list*中的参数。*arg_list*中可能包含形如`_n`的名字，其中*n*是一个整数。这些参数是占位符，表示*newCallable*的参数，它们占据了传递给*newCallable*的参数的位置。数值*n*表示生成的可调用对象中参数的位置：`_1`为*newCallable*的第一个参数，`_2`为*newCallable*的第二个参数，依次类推。这些名字都定义在命名空间*placeholders*中，它又定义在命名空间*std*中，因此使用时应该进行双重限定。
+其中，`newCallable`本身是一个可调用对象，`arg_list`是一个以逗号分隔的参数列表，对应给定的`callable`的参数。之后调用`newCallable`时，`newCallable`会再调用`callable`，并传递给它`arg_list`中的参数。`arg_list`中可能包含形如`_n`的名字，其中`n`是一个整数。这些参数是占位符，表示`newCallable`的参数，它们占据了传递给`newCallable`的参数的位置。数值`n`表示生成的可调用对象中参数的位置：`_1`为`newCallable`的第一个参数，`_2`为`newCallable`的第二个参数，依次类推。这些名字都定义在命名空间`placeholders`中，它又定义在命名空间`std`中，因此使用时应该进行双重限定。
 
 ```c++
 using std::placeholders::_1;
@@ -280,7 +280,7 @@ for_each(words.begin(), words.end(), bind(print, ref(os), _1, ' '));
 
 ## 再探迭代器（Revisiting Iterators）
 
-除了为每种容器定义的迭代器之外，标准库还在头文件*iterator*中定义了另外几种迭代器。
+除了为每种容器定义的迭代器之外，标准库还在头文件`iterator`中定义了另外几种迭代器。
 
 - 插入迭代器（insert iterator）：该类型迭代器被绑定到容器对象上，可用来向容器中插入元素。
 - 流迭代器（stream iterator）：该类型迭代器被绑定到输入或输出流上，可用来遍历所关联的IO流。
@@ -439,7 +439,7 @@ alg(beg, end, beg2, other args);
 alg(beg, end, beg2, end2, other args);
 ```
 
-其中*alg*是算法名称，*beg*和*end*表示算法所操作的输入范围。几乎所有算法都接受一个输入范围，是否有其他参数依赖于算法操作。*dest*表示输出范围，*beg2*和*end2*表示第二个输入范围。
+其中`alg`是算法名称，`beg`和`end`表示算法所操作的输入范围。几乎所有算法都接受一个输入范围，是否有其他参数依赖于算法操作。`dest`表示输出范围，`beg2`和`end2`表示第二个输入范围。
 
 向输出迭代器写入数据的算法都假定目标空间足够容纳要写入的数据。
 

@@ -461,11 +461,11 @@ stack<string, vector<string>> str_stk2(svec);
 
 所有适配器都要求容器具有添加和删除元素的能力，因此适配器不能构造在`array`上。适配器还要求容器具有添加、删除和访问尾元素的能力，因此也不能用`forward_list`构造适配器。
 
-栈适配器`stack`定义在头文件*stack*中，其支持的操作如下：
+栈适配器`stack`定义在头文件`stack`中，其支持的操作如下：
 
 ![9-20](Images/9-20.png)
 
-队列适配器`queue`和`priority_queue`定义在头文件*queue*中，其支持的操作如下：
+队列适配器`queue`和`priority_queue`定义在头文件`queue`中，其支持的操作如下：
 
 ![9-21](Images/9-21.png)
 
