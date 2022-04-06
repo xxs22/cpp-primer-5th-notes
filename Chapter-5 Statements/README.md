@@ -59,6 +59,7 @@ else
 其中`condition`是判断条件，可以是一个表达式或者初始化了的变量声明。`condition`必须用圆括号括起来。
 
 - 如果`condition`为真，则执行`statement`。执行完成后，程序继续执行`if`语句后面的其他语句。
+
 - 如果`condition`为假，则跳过`statement`。对于简单`if`语句来说，程序直接执行`if`语句后面的其他语句；对于`if-else`语句来说，程序先执行`statement2`，再执行`if`语句后面的其他语句。
 
 `if`语句可以嵌套，其中`else`与离它最近的尚未匹配的`if`相匹配。
@@ -186,7 +187,9 @@ while (cin >> buf && !buf.empty())
 `continue`语句中断当前迭代后，具体操作视迭代语句类型而定：
 
 - 对于`while`和`do-while`语句来说，继续判断条件的值。
+
 - 对于传统的`for`语句来说，继续执行`for`语句头中的第三部分，之后判断条件的值。
+
 - 对于范围`for`语句来说，是用序列中的下一个元素初始化循环变量。
 
 ### goto语句（The goto Statement）
@@ -216,7 +219,9 @@ goto label;
 异常处理机制包括`throw`表达式（throw expression）、`try`语句块（try block）和异常类（exception class）。
 
 - 异常检测部分使用`throw`表达式表示它遇到了无法处理的问题（`throw`引发了异常）。
+
 - 异常处理部分使用`try`语句块处理异常。`try`语句块以关键字`try`开始，并以一个或多个`catch`子句（catch clause）结束。`try`语句块中代码抛出的异常通常会被某个`catch`子句处理，`catch`子句也被称作异常处理代码（exception handler）。
+
 - 异常类用于在`throw`表达式和相关的`catch`子句之间传递异常的具体信息。
 
 ### throw表达式（A throw Expression）
@@ -257,6 +262,7 @@ catch (exception-declaration)
   ![5-2](Images/5-2.png)
 
 - 头文件`new`定义了`bad_alloc`异常类。
+
 - 头文件`type_info`定义了`bad_cast`异常类。
 
 标准库异常类的继承体系：

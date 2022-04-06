@@ -168,10 +168,10 @@ BlobPtr<T>& BlobPtr<T>::operator++()
   // forward declarations needed for friend declarations in Blob
   template <typename> class BlobPtr;
   template <typename> class Blob;    // needed for parameters in operator==
-  
+
   template <typename T>
   bool operator==(const Blob<T>&, const Blob<T>&);
-  
+
   template <typename T>
   class Blob
   {
@@ -189,7 +189,7 @@ BlobPtr<T>& BlobPtr<T>::operator++()
   ```c++
   // forward declaration necessary to befriend a specific instantiation of a template
   template <typename T> class Pal;
-  
+
   class C
   { // C is an ordinary, nontemplate class
       friend class Pal<C>;    // Pal instantiated with class C is a friend to C
@@ -197,7 +197,7 @@ BlobPtr<T>& BlobPtr<T>::operator++()
       // no forward declaration required when we befriend all instantiations
       template <typename T> friend class Pal2;
   };
-  
+
   template <typename T>
   class C2
   { // C2 is itself a class template
@@ -236,7 +236,7 @@ class Foo
 {
 public:
     static std::size_t count() { return ctr; }
-    
+
 private:
     static std::size_t ctr;
 };
@@ -332,11 +332,11 @@ public:
     // as with any function template, the type of T is deduced by the compiler
     template <typename T>
     void operator()(T *p) const
-    { 
+    {
         os << "deleting unique_ptr" << std::endl;
         delete p;
     }
-    
+
 private:
     std::ostream &os;
 };
@@ -411,7 +411,9 @@ int i = compare(a1[0], a2[0]);    // instantiation will appear elsewhere
 有3种类型转换可以在调用中应用于函数模板：
 
 - 顶层`const`会被忽略。
+
 - 可以将一个非`const`对象的引用或指针传递给一个`const`引用或指针形参。
+
 - 如果函数形参不是引用类型，则可以对数组或函数类型的实参应用正常的指针转换。数组实参可以转换为指向其首元素的指针。函数实参可以转换为该函数类型的指针。
 
 其他的类型转换，如算术转换、派生类向基类的转换以及用户定义的转换，都不能应用于函数模板。
@@ -595,6 +597,7 @@ void f3<int&>(int&);       // when T is int&, function parameter collapses to in
 模板参数绑定的两个例外规则导致了两个结果：
 
 - 如果一个函数参数是指向模板类型参数的右值引用，则可以传递给它任意类型的实参。
+
 - 如果将一个左值传递给这样的参数，则函数参数被实例化为一个普通的左值引用。
 
 当代码中涉及的类型可能是普通（非引用）类型，也可能是引用类型时，编写正确的代码就变得异常困难。
@@ -639,17 +642,25 @@ s2 = std::move(s1);     // ok: but after the assigment s1 has indeterminate valu
 - 在`std::move(string("bye!"))`中传递的是右值。
 
   - 推断出的`T`类型为`string`。
+
   - `remove_reference`用`string`进行实例化。
+
   - `remove_reference<string>`的`type`成员是`string`。
+
   - `move`的返回类型是`string&&`。
+
   - `move`的函数参数`t`的类型为`string&&`。
 
 - 在`std::move(s1)`中传递的是左值。
 
   - 推断出的`T`类型为`string&`。
+
   - `remove_reference`用`string&`进行实例化。
+
   - `remove_reference<string&>`的`type`成员是`string`。
+
   - `move`的返回类型是`string&&`。
+
   - `move`的函数参数`t`的类型为`string& &&`，会折叠成`string&`。
 
 可以使用`static_cast`显式地将一个左值转换为一个右值引用。
@@ -718,6 +729,7 @@ intermediary(Type &&arg)
 ```
 
 - 如果实参是一个右值，则`Type`是一个普通（非引用）类型，`forward<Type>`返回类型`Type&&`。
+
 - 如果实参是一个左值，则通过引用折叠，`Type`也是一个左值引用类型，`forward<Type>`返回类型`Type&& &`，对返回类型进行引用折叠，得到`Type&`。
 
 使用`forward`编写完善的转发函数。
@@ -739,11 +751,17 @@ void flip(F f, T1 &&t1, T2 &&t2)
 如果重载涉及函数模板，则函数匹配规则会受到一些影响：
 
 - 对于一个调用，其候选函数包括所有模板实参推断成功的函数模板实例。
+
 - 候选的函数模板都是可行的，因为模板实参推断会排除任何不可行的模板。
+
 - 和往常一样，可行函数（模板与非模板）按照类型转换（如果需要的话）来排序。但是可以用于函数模板调用的类型转换非常有限。
+
 - 和往常一样，如果恰有一个函数提供比其他任何函数都更好的匹配，则选择此函数。但是如果多个函数都提供相同级别的匹配，则：
+
   - 如果同级别的函数中只有一个是非模板函数，则选择此函数。
+
   - 如果同级别的函数中没有非模板函数，而有多个函数模板，且其中一个模板比其他模板更特例化，则选择此模板。
+
   - 否则该调用有歧义。
 
 通常，如果使用了一个没有声明的函数，代码将无法编译。但对于重载函数模板的函数而言，如果编译器可以从模板实例化出与调用匹配的版本，则缺少的声明就不再重要了。
@@ -769,6 +787,7 @@ string debug_rep(char *p)
 可变参数模板指可以接受可变数量参数的模板函数或模板类。可变数量的参数被称为参数包（parameter pack），分为两种：
 
 - 模板参数包（template parameter pack），表示零个或多个模板参数。
+
 - 函数参数包（function parameter pack），表示零个或多个函数参数。
 
 用一个省略号`…`来指出模板参数或函数参数表示一个包。在一个模板参数列表中，`class…`或`typename…`指出接下来的参数表示零个或多个类型的列表；一个类型名后面跟一个省略号表示零个或多个给定类型的非类型参数列表。在函数参数列表中，如果一个参数的类型是模板参数包，则此参数也是函数参数包。

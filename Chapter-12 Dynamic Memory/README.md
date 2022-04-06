@@ -61,7 +61,9 @@ r = q;  // assign to r, making it point to a different address
 程序使用动态内存通常出于以下三种原因之一：
 
 - 不确定需要使用多少对象。
+
 - 不确定所需对象的准确类型。
+
 - 需要在多个对象间共享数据。
 
 ### 直接管理内存（Managing Memory Directly）
@@ -209,9 +211,13 @@ void f(destination &d /* other parameters */)
 智能指针规范：
 
 - 不使用相同的内置指针值初始化或`reset`多个智能指针。
+
 - 不释放`get`返回的指针。
+
 - 不使用`get`初始化或`reset`另一个智能指针。
+
 - 使用`get`返回的指针时，如果最后一个对应的智能指针被销毁，指针就无效了。
+
 - 使用`shared_ptr`管理并非`new`分配的资源时，应该传递删除函数。
 
 ### unique_ptr（unique_ptr）

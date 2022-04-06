@@ -3,9 +3,13 @@
 一个类通过定义五种特殊的成员函数来控制对象的拷贝、移动、赋值和销毁操作。
 
 - 拷贝构造函数（copy constructor）
+
 - 拷贝赋值运算符（copy-assignment operator）
+
 - 移动构造函数（move constructor）
+
 - 移动赋值运算符（move-assignment operator）
+
 - 析构函数（destructor）
 
 这些操作统称为拷贝控制操作（copy control）。
@@ -68,8 +72,11 @@ string nines = string(100, '9');       // copy initialization
 发生拷贝初始化的情况：
 
 - 用`=`定义变量。
+
 - 将对象作为实参传递给非引用类型的形参。
+
 - 从返回类型为非引用类型的函数返回对象。
+
 - 用花括号列表初始化数组中的元素或聚合类中的成员。
 
 当传递一个实参或者从函数返回一个值时，不能隐式使用`explicit`构造函数。
@@ -187,6 +194,7 @@ struct NoCopy
 `=delete`和`=default`有两点不同：
 
 - `=delete`可以对任何函数使用；`=default`只能对具有合成版本的函数使用。
+
 - `=delete`必须出现在函数第一次声明的地方；`=default`既能出现在类内，也能出现在类外。
 
 析构函数不能是删除的函数。对于析构函数被删除的类型，不能定义该类型的变量或者释放指向该类型动态分配对象的指针。

@@ -19,7 +19,7 @@ struct Sales_data
     std::string isbn() const { return bookNo; }
     Sales_data& combine(const Sales_data&);
     double avg_price() const;
-    
+
     // data members
     std::string bookNo;
     unsigned units_sold = 0;
@@ -27,7 +27,7 @@ struct Sales_data
 };
 ```
 
-成员函数通过一个名为`this`的隐式额外参数来访问调用它的对象。`this`参数是一个常量指针，被初始化为调用该函数的对象地址。在函数体内可以显式使用`this`指针。 
+成员函数通过一个名为`this`的隐式额外参数来访问调用它的对象。`this`参数是一个常量指针，被初始化为调用该函数的对象地址。在函数体内可以显式使用`this`指针。
 
 ```c++
 total.isbn()
@@ -47,7 +47,7 @@ C++允许在成员函数的参数列表后面添加关键字`const`，表示`thi
 // this code is illegal: we may not explicitly define the this pointer ourselves
 // note that this is a pointer to const because isbn is a const member
 std::string Sales_data::isbn(const Sales_data *const this)
-{ 
+{
     return this->isbn;
 }
 ```
@@ -59,7 +59,7 @@ std::string Sales_data::isbn(const Sales_data *const this)
 在类的外部定义成员函数时，成员函数的定义必须与它的声明相匹配。如果成员函数被声明为常量成员函数，那么它的定义也必须在参数列表后面指定`const`属性。同时，类外部定义的成员名字必须包含它所属的类名。
 
 ```c++
-double Sales_data::avg_price() const 
+double Sales_data::avg_price() const
 {
     if (units_sold)
         return revenue / units_sold;
@@ -112,7 +112,7 @@ ostream &print(ostream &os, const Sales_data &item)
 构造函数的名字和类名相同，没有返回类型，且不能被声明为`const`函数。构造函数在`const`对象的构造过程中可以向其写值。
 
 ```c++
-struct Sales_data 
+struct Sales_data
 {
     // constructors added
     Sales_data() = default;
@@ -129,12 +129,15 @@ struct Sales_data
 如果类没有显式地定义构造函数，则编译器会为类隐式地定义一个默认构造函数，该构造函数也被称为合成的默认构造函数（synthesized default constructor）。对于大多数类来说，合成的默认构造函数初始化数据成员的规则如下：
 
 - 如果存在类内初始值，则用它来初始化成员。
+
 - 否则默认初始化该成员。
 
 某些类不能依赖于合成的默认构造函数。
 
 - 只有当类没有声明任何构造函数时，编译器才会自动生成默认构造函数。一旦类定义了其他构造函数，那么除非再显式地定义一个默认的构造函数，否则类将没有默认构造函数。
+
 - 如果类包含内置类型或者复合类型的成员，则只有当这些成员全部存在类内初始值时，这个类才适合使用合成的默认构造函数。否则用户在创建类的对象时就可能得到未定义的值。
+
 - 编译器不能为某些类合成默认构造函数。例如类中包含一个其他类类型的成员，且该类型没有默认构造函数，那么编译器将无法初始化该成员。
 
 在C++11中，如果类需要默认的函数行为，可以通过在参数列表后面添加`=default`来要求编译器生成构造函数。其中`=default`既可以和函数声明一起出现在类的内部，也可以作为定义出现在类的外部。和其他函数一样，如果`=default`在类的内部，则默认构造函数是内联的。
@@ -157,7 +160,7 @@ Sales_data(const std::string &s):
     bookNo(s), units_sold(0), revenue(0) { }
 ```
 
-构造函数不应该轻易覆盖掉类内初始值，除非新值与原值不同。如果编译器不支持类内初始值，则所有构造函数都应该显式初始化每个内置类型的成员。 
+构造函数不应该轻易覆盖掉类内初始值，除非新值与原值不同。如果编译器不支持类内初始值，则所有构造函数都应该显式初始化每个内置类型的成员。
 
 ### 拷贝、赋值和析构（Copy、Assignment，and Destruction）
 
@@ -168,10 +171,11 @@ Sales_data(const std::string &s):
 使用访问说明符（access specifier）可以加强类的封装性：
 
 - 定义在`public`说明符之后的成员在整个程序内都可以被访问。`public`成员定义类的接口。
+
 - 定义在`private`说明符之后的成员可以被类的成员函数访问，但是不能被使用该类的代码访问。`private`部分封装了类的实现细节。
 
 ```c++
-class Sales_data 
+class Sales_data
 {
 public: // access specifier added
     Sales_data() = default;
@@ -181,9 +185,9 @@ public: // access specifier added
     Sales_data(std::istream&);
     std::string isbn() const { return bookNo; }
     Sales_data &combine(const Sales_data&);
-    
+
 private: // access specifier added
-    double avg_price() const { return units_sold ? revenue/units_sold : 0; }   
+    double avg_price() const { return units_sold ? revenue/units_sold : 0; }
     std::string bookNo;
     unsigned units_sold = 0;
     double revenue = 0.0;
@@ -199,13 +203,13 @@ private: // access specifier added
 类可以允许其他类或函数访问它的非公有成员，方法是使用关键字`friend`将其他类或函数声明为它的友元。
 
 ```C++
-class Sales_data 
+class Sales_data
 {
     // friend declarations for nonmember Sales_data operations added
     friend Sales_data add(const Sales_data&, const Sales_data&);
     friend std::istream &read(std::istream&, Sales_data&);
     friend std::ostream &print(std::ostream&, const Sales_data&);
-    
+
     // other members and access specifiers as before
 public:
     Sales_data() = default;
@@ -215,7 +219,7 @@ public:
     Sales_data(std::istream&);
     std::string isbn() const { return bookNo; }
     Sales_data &combine(const Sales_data&);
-    
+
 private:
     std::string bookNo;
     unsigned units_sold = 0;
@@ -235,6 +239,7 @@ std::ostream &print(std::ostream&, const Sales_data&);
 封装的好处：
 
 - 确保用户代码不会无意间破坏封装对象的状态。
+
 - 被封装的类的具体实现细节可以随时改变，而无须调整用户级别的代码。
 
 友元声明仅仅指定了访问权限，而并非一个通常意义上的函数声明。如果希望类的用户能调用某个友元函数，就必须在友元声明之外再专门对函数进行一次声明（部分编译器没有该限制）。
@@ -248,7 +253,7 @@ std::ostream &print(std::ostream&, const Sales_data&);
 由类定义的类型名字和其他成员一样存在访问限制，可以是`public`或`private`中的一种。
 
 ```c++
-class Screen 
+class Screen
 {
 public:
     // alternative way to declare a type member using a type alias
@@ -268,7 +273,7 @@ public:
 使用关键字`mutable`可以声明可变数据成员（mutable data member）。可变数据成员永远不会是`const`的，即使它在`const`对象内。因此`const`成员函数可以修改可变成员的值。
 
 ```c++
-class Screen 
+class Screen
 {
 public:
     void some_member() const;
@@ -293,7 +298,7 @@ void Screen::some_member() const
 通过区分成员函数是否为`const`的，可以对其进行重载。在常量对象上只能调用`const`版本的函数；在非常量对象上，尽管两个版本都能调用，但会选择非常量版本。
 
 ```c++
-class Screen 
+class Screen
 {
 public:
     // display overloaded on whether the object is const or not
@@ -301,7 +306,7 @@ public:
     { do_display(os); return *this; }
     const Screen &display(std::ostream &os) const
     { do_display(os); return *this; }
-    
+
 private:
     // function to do the work of displaying a Screen
     void do_display(std::ostream &os) const
@@ -343,7 +348,7 @@ class Link_screen
 除了普通函数，类还可以把其他类或其他类的成员函数声明为友元。友元类的成员函数可以访问此类包括非公有成员在内的所有成员。
 
 ```c++
-class Screen 
+class Screen
 {
     // Window_mgr members can access the private parts of class Screen
     friend class Window_mgr;
@@ -429,7 +434,9 @@ private:
 成员函数中名字的解析顺序：
 
 - 在成员函数内查找该名字的声明，只有在函数使用之前出现的声明才会被考虑。
+
 - 如果在成员函数内没有找到，则会在类内继续查找，这时会考虑类的所有成员。
+
 - 如果类内也没有找到，会在成员函数定义之前的作用域查找。
 
 ```c++
@@ -520,13 +527,17 @@ public:
 默认初始化的发生情况：
 
 - 在块作用域内不使用初始值定义非静态变量或数组。
+
 - 类本身含有类类型的成员且使用合成默认构造函数。
+
 - 类类型的成员没有在构造函数初始值列表中显式初始化。
 
 值初始化的发生情况：
 
 - 数组初始化时提供的初始值数量少于数组大小。
+
 - 不使用初始值定义局部静态变量。
+
 - 通过`T()`形式（`T`为类型）的表达式显式地请求值初始化。
 
 类必须包含一个默认构造函数。
@@ -603,9 +614,13 @@ item.combine(static_cast<Sales_data>(cin));
 聚合类满足如下条件：
 
 - 所有成员都是`public`的。
+
 - 没有定义任何构造函数。
+
 - 没有类内初始值。
+
 - 没有基类。
+
 - 没有虚函数。
 
 ```c++
@@ -628,8 +643,11 @@ Data val1 = { 0, "Anna" };
 数据成员都是字面值类型的聚合类是字面值常量类。或者一个类不是聚合类，但符合下列条件，则也是字面值常量类：
 
 - 数据成员都是字面值类型。
+
 - 类至少含有一个`constexpr`构造函数。
+
 - 如果数据成员含有类内初始值，则内置类型成员的初始值必须是常量表达式。如果成员属于类类型，则初始值必须使用成员自己的`constexpr`构造函数。
+
 - 类必须使用析构函数的默认定义。
 
 `constexpr`构造函数用于生成`constexpr`对象以及`constexpr`函数的参数或返回类型。

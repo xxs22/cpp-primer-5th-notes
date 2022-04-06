@@ -3,12 +3,19 @@
 部分IO库设施：
 
 - `istream`：输入流类型，提供输入操作。
+
 - `ostream`：输出流类型，提供输出操作。
+
 - `cin`：`istream`对象，从标准输入读取数据。
+
 - `cout`：`ostream`对象，向标准输出写入数据。
+
 - `cerr`：`ostream`对象，向标准错误写入数据。
+
 - `>>`运算符：从`istream`对象读取输入数据。
+
 - `<<`运算符：向`ostream`对象写入输出数据。
+
 - `getline`函数：从`istream`对象读取一行数据，写入`string`对象。
 
 ## IO类（The IO Classes）
@@ -64,9 +71,13 @@ cin.setstate(old_state);    // now reset cin to its old state
 每个输出流都管理一个缓冲区，用于保存程序读写的数据。导致缓冲刷新（即数据真正写入输出设备或文件）的原因有很多：
 
 - 程序正常结束。
+
 - 缓冲区已满。
+
 - 使用操纵符（如`endl`）显式刷新缓冲区。
+
 - 在每个输出操作之后，可以用`unitbuf`操纵符设置流的内部状态，从而清空缓冲区。默认情况下，对`cerr`是设置`unitbuf`的，因此写到`cerr`的内容都是立即刷新的。
+
 - 一个输出流可以被关联到另一个流。这种情况下，当读写被关联的流时，关联到的流的缓冲区会被刷新。默认情况下，`cin`和`cerr`都关联到`cout`，因此，读`cin`或写`cerr`都会刷新`cout`的缓冲区。
 
 `flush`操纵符刷新缓冲区，但不输出任何额外字符。`ends`向缓冲区插入一个空字符，然后刷新缓冲区。
@@ -142,11 +153,17 @@ ofstream out;   // output file stream that is not associated with any file
 ![8-4](Images/8-4.png)
 
 - 只能对`ofstream`或`fstream`对象设定`out`模式。
+
 - 只能对`ifstream`或`fstream`对象设定`in`模式。
+
 - 只有当`out`被设定时才能设定`trunc`模式。
+
 - 只要`trunc`没被设定，就能设定`app`模式。在`app`模式下，即使没有设定`out`模式，文件也是以输出方式打开。
+
 - 默认情况下，即使没有设定`trunc`，以`out`模式打开的文件也会被截断。如果想保留以`out`模式打开的文件内容，就必须同时设定`app`模式，这会将数据追加写到文件末尾；或者同时设定`in`模式，即同时进行读写操作。
+
 - `ate`和`binary`模式可用于任何类型的文件流对象，并可以和其他任何模式组合使用。
+
 - 与`ifstream`对象关联的文件默认以`in`模式打开，与`ofstream`对象关联的文件默认以`out`模式打开，与`fstream`对象关联的文件默认以`in`和`out`模式打开。
 
 默认情况下，打开`ofstream`对象时，文件内容会被丢弃，阻止文件清空的方法是同时指定`app`或`in`模式。

@@ -64,7 +64,7 @@ Quote &r = bulk;    // r bound to the Quote part of bulk
 每个类控制它自己的成员初始化过程，派生类必须使用基类的构造函数来初始化它的基类部分。派生类的构造函数通过构造函数初始化列表来将实参传递给基类构造函数。
 
 ```c++
-Bulk_quote(const std::string& book, double p, 
+Bulk_quote(const std::string& book, double p,
             std::size_t qty, double disc) :
     Quote(book, p), min_qty(qty), discount(disc) { }
 ```
@@ -150,7 +150,7 @@ struct B
     void f3();
 };
 
-struct D1 : B 
+struct D1 : B
 {
     void f1(int) const override;    // ok: f1 matches f1 in the base
     void f2(int) override;      // error: B has no f2(int) function
@@ -237,13 +237,17 @@ void clobber(Base &b) { b.prot_mem = 0; }
 派生访问说明符的作用是控制派生类（包括派生类的派生类）用户对于基类成员的访问权限。
 
 - 如果使用公有继承，则基类的公有成员和受保护成员在派生类中属性不发生改变。
+
 - 如果使用受保护继承，则基类的公有成员和受保护成员在派生类中变为受保护成员。
+
 - 如果使用私有继承，则基类的公有成员和受保护成员在派生类中变为私有成员。
 
 派生类到基类转换的可访问性（假定`D`继承自`B`）：
 
 - 只有当`D`公有地继承`B`时，用户代码才能使用派生类到基类的转换。
+
 - 不论`D`以什么方式继承`B`，`D`的成员函数和友元都能使用派生类到基类的转换。
+
 - 如果`D`继承`B`的方式是公有的或者受保护的，则`D`的派生类的成员函数和友元可以使用`D`到`B`的类型转换；反之，如果`D`继承`B`的方式是私有的，则不能使用。
 
 对于代码中的某个给定节点来说，如果基类的公有成员是可访问的，则派生类到基类的类型转换也是可访问的。
@@ -313,7 +317,7 @@ protected:
 
 struct Derived : Base
 {
-    int get_mem() { return mem; }   // returns Derived::mem  
+    int get_mem() { return mem; }   // returns Derived::mem
 protected:
     int mem;    // hides mem in the base
 };
@@ -342,7 +346,7 @@ class Base
 {
 private:
     int x;
-    
+
 public:
     virtual void mf1() = 0;
     virtual void mf1(int);
@@ -403,7 +407,9 @@ delete itemP;     // destructor for Bulk_quote called
 派生类中删除的拷贝控制与基类的关系：
 
 - 如果基类中的默认构造函数、拷贝构造函数、拷贝赋值运算符或析构函数是被删除的或者不可访问的函数，则派生类中对应的成员也会是被删除的。因为编译器不能使用基类成员来执行派生类对象中基类部分的构造、赋值或销毁操作。
+
 - 如果基类的析构函数是被删除的或者不可访问的，则派生类中合成的默认和拷贝构造函数也会是被删除的。因为编译器无法销毁派生类对象中的基类部分。
+
 - 编译器不会合成一个被删除的移动操作。当我们使用`=default`请求一个移动操作时，如果基类中对应的操作是被删除的或者不可访问的，则派生类中的操作也会是被删除的。因为派生类对象中的基类部分不能移动。同样，如果基类的析构函数是被删除的或者不可访问的，则派生类的移动构造函数也会是被删除的。
 
 在实际编程中，如果基类没有默认、拷贝或移动构造函数，则一般情况下派生类也不会定义相应的操作。
