@@ -1,4 +1,8 @@
+> 本仓库初始版本 FROK 于 [Cpp-Primer-5th-Notes-CN](https://github.com/czs108/Cpp-Primer-5th-Notes-CN)，并学习过程中添加了自己的理解，以为记录。
+
 # 《C++ Primer中文版（第5版）》笔记
+
+> 开发环境搭建详见: [《C++ 开发环境搭建》](DevBuild.md)
 
 ![Cover](Cover.png)
 
@@ -52,6 +56,6 @@
 
 ## 关于
 
-***GitHub***：https://github.com/czs108
+***GitHub***: https://github.com/xxs22
 
-***E-Mail***：chenzs108@outlook.com
+***E-Mail***: xiansong.xxs@gmail.com

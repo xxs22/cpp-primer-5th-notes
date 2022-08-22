@@ -1,0 +1,28 @@
+{
+  /* 编辑器基础配置 */
+  "files.autoSave": "onWindowChange", // 离开 vscode 时自动保存
+  "files.eol": "\n", // LF格式换行
+  "files.insertFinalNewline": true, // 保存时最后添加一个空行
+  "files.trimFinalNewlines": true, // 保存时将最后所有空行合并一个空行
+  "editor.rulers": [80, 110], // 显示宽度标尺
+  "editor.insertSpaces": true, // tab 改为 空格
+  "editor.tabSize": 2, // tab 宽度为两个空格
+  "editor.formatOnSave": true, // 保存时候自动格式化
+  /* 以下为语言特定配置 */
+  "cmake.cmakePath": "/usr/local/bin/cmake",
+  "[json]": {
+    "editor.formatOnSave": false,
+  },
+  "[jsonc]": {
+    "editor.formatOnSave": false,
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
+}

@@ -1,0 +1,11 @@
+{
+ "recommendations": [
+    "ms-vscode.cpptools", // C/C++
+    "jeff-hykin.better-cpp-syntax", // Better C++ Syntax
+    "twxs.cmake", // CMake
+    "ms-vscode.cmake-tools", // CMake Tools
+    "cschlosser.doxdocg", // Generate Doxygen Comments in VS Code
+    "franneck94.c-cpp-runner", // C/C++ Runner
+    "ms-vscode.cpptools-themes", // C/C++ Themes
+ ]
+}
