@@ -1,2 +1,5 @@
+# PNG图片 不启用语言统计
+*.png linguist-detectable=false
+
+# MD 记为 C++ 统计
 *.md linguist-language=C++
-*.png linguist-language=C++

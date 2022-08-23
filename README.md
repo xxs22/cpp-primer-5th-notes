@@ -4,11 +4,11 @@
 
 > 开发环境搭建详见: [《C++ 开发环境搭建》](DevBuild.md)
 
-![Cover](Cover.png)
+![Cover](/images/Cover.png)
 
 ## 目录
 
-[第1章 开始](https://github.com/czs108/Cpp-Primer-5th-Note-CN/tree/master/Chapter-1%20Getting%20Started)
+[第1章 开始](/Chap1:Getting%20Started)
 
 ### 第I部分 C++基础
 
