@@ -10,8 +10,8 @@
 
 #### 系统环境 -- clang/clang、cmake
 
-* clang/clang++: Mac 系统下，终端内执行: `xcode-select --install`，然后以此点击 "安装"、"同意" 即可
-* cmake: 使用 homebrew 安装即可: `brew install cmake`
+- clang/clang++: Mac 系统下，终端内执行: `xcode-select --install`，然后以此点击 "安装"、"同意" 即可
+- cmake: 使用 homebrew 安装即可: `brew install cmake`
 
 #### 代码编辑 -- VSCODE
 
@@ -33,11 +33,10 @@
 
 - 开启自定义配置: 项目目录下新建 `.vscode` 目录，目录下新建 `settings.json`;
 - 插件配置:
-  - CMake: 安装之后只需添加执行路径即可: 
+  - CMake: 安装之后只需添加执行路径即可:
   ```json
   { "cmake.cmakePath": "/usr/local/bin/cmake" }
   ```
-
 
 #### 参考文档
 
